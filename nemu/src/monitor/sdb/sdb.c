@@ -53,7 +53,9 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_si(char *args) {
-  cpu_exec(1);
+  int step = atoi(args);
+  // printf("si %d\n", step);
+  cpu_exec(step);
   return 0;
 }
 
