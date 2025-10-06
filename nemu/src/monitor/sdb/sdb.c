@@ -17,6 +17,7 @@
 #include <cpu/cpu.h>
 #include <readline/readline.h>
 #include <readline/history.h>
+#include <memory/paddr.h>
 #include "sdb.h"
 
 static int is_batch_mode = false;
@@ -76,7 +77,40 @@ static int cmd_info(char *args) {
 
 
 static int cmd_x(char *args) {
-  printf("x\n");
+  if (args == NULL) {
+    printf("Usage: x N EXPR\n");
+    return 0;
+  }
+  
+  // 解析参数：N EXPR
+  char *token = strtok(args, " ");
+  if (token == NULL) {
+    printf("Usage: x N EXPR\n");
+    return 0;
+  }
+  
+  int N = atoi(token);  // 获取要读取的4字节数量
+  
+  token = strtok(NULL, " ");
+  if (token == NULL) {
+    printf("Usage: x N EXPR\n");
+    return 0;
+  }
+  
+  // 解析十六进制地址
+  paddr_t addr;
+  if (sscanf(token, "0x%x", &addr) != 1) {
+    printf("Invalid address format. Use 0x prefix for hexadecimal.\n");
+    return 0;
+  }
+  
+  // 读取并显示内存内容
+  printf("Memory contents at 0x%08x:\n", addr);
+  for (int i = 0; i < N; i++) {
+    word_t value = paddr_read(addr + i * 4, 4);
+    printf("0x%08x: 0x%08x\n", addr + i * 4, value);
+  }
+  
   return 0;
 }
 
