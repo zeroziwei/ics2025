@@ -24,6 +24,12 @@ const char *regs[] = {
 };
 
 void isa_reg_display() {
+  // 打印所有通用寄存器的值
+  for (int i = 0; i < 32; i++) {
+    printf("%-4s: 0x%08x\n", regs[i], cpu.gpr[i]);
+  }
+  // 打印程序计数器
+  printf("%-4s: 0x%08x\n", "pc", cpu.pc);
 }
 
 word_t isa_reg_str2val(const char *s, bool *success) {
