@@ -60,7 +60,17 @@ static int cmd_si(char *args) {
 }
 
 static int cmd_info(char *args) {
-  printf("info\n");
+  // printf("info\n");
+  if (args == NULL) {
+    printf("info w or info r \n");
+  } else if (strcmp(args, "w") == 0) {
+    printf("info w\n");
+  } else if (strcmp(args, "r") == 0) {
+    printf("info r\n");
+    isa_reg_display();
+  } else {
+    printf("Unknown command '%s'\n", args);
+  }
   return 0;
 }
 
