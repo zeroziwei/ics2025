@@ -52,7 +52,44 @@ static int cmd_q(char *args) {
   return -1;
 }
 
+static int cmd_si(char *args) {
+  cpu_exec(1);
+  return 0;
+}
+
+static int cmd_info(char *args) {
+  printf("info\n");
+  return 0;
+}
+
+
+static int cmd_x(char *args) {
+  printf("x\n");
+  return 0;
+}
+
+
+static int cmd_p(char *args) {
+  printf("p\n");
+  return 0;
+}
+
+
+static int cmd_w(char *args) {
+  printf("w\n");
+  return 0;
+}
+
+
+static int cmd_d(char *args) {
+  printf("d\n");
+  return 0;
+}
+
+
 static int cmd_help(char *args);
+
+
 
 static struct {
   const char *name;
@@ -62,9 +99,14 @@ static struct {
   { "help", "Display information about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
+  { "si", "Step one instruction", cmd_si },
+  { "info", "Display information about the current state of the program", cmd_info },
+  { "x", "Print the value of the expression", cmd_x },
+  { "p", "Print the value of the expression", cmd_p },
+  { "w", "Set a watchpoint", cmd_w },
+  { "d", "Delete a watchpoint", cmd_d }
 
   /* TODO: Add more commands */
-
 };
 
 #define NR_CMD ARRLEN(cmd_table)
