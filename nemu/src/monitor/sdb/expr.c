@@ -14,6 +14,7 @@
 ***************************************************************************************/
 
 #include <isa.h>
+#include <memory/paddr.h>
 
 /* We use the POSIX regex functions to process regular expressions.
  * Type 'man regex' for more information about POSIX regex functions.
@@ -23,7 +24,12 @@
 enum {
   TK_NOTYPE = 256,  // 这里空格为什么要用256
   TK_EQ,
+  TK_NEQ,
+  TK_AND,
   TK_NUM, //数字
+  TK_HEX, //十六进制数
+  TK_REG, //寄存器
+  TK_DEREF, //指针解引用
   // 只有多字符的匹配需要在这里定义
   /* TODO: Add more token types */
 
@@ -42,8 +48,12 @@ static struct rule {
   {"\\+", '+'},         // plus
   {"\\-", '-'},         // minus
   {"==", TK_EQ},        // equal
-  {"[0-9]+", TK_NUM},     // number
-  {"\\*", '*'},         // multiply
+  {"!=", TK_NEQ},       // not equal
+  {"&&", TK_AND},       // logical and
+  {"0x[0-9a-fA-F]+", TK_HEX},  // hexadecimal number
+  {"\\$[a-zA-Z0-9_]+", TK_REG}, // register
+  {"[0-9]+", TK_NUM},     // decimal number
+  {"\\*", '*'},         // multiply or dereference
   {"\\/", '/'},         // divide
   {"\\(", '('},   // left parenthesis
   {"\\)", ')'},   // right parenthesis
@@ -118,10 +128,12 @@ static bool make_token(char *e) {
             //跳过空格不记录
             break;
           case TK_NUM:
-            //记录数字
+          case TK_HEX:
+          case TK_REG:
+            //记录数字、十六进制数、寄存器
             tokens[nr_token].type = rules[i].token_type;
             if (substr_len >= 32) {
-              printf("数字长度超过32\n");
+              printf("Token长度超过32\n");
               return false;
             }
             // strncpy
@@ -137,7 +149,9 @@ static bool make_token(char *e) {
           case '(':
           case ')':
           case TK_EQ:
-            //记录等于号
+          case TK_NEQ:
+          case TK_AND:
+            //记录运算符
             tokens[nr_token].type = rules[i].token_type;
             strncpy(tokens[nr_token].str, substr_start, substr_len);
             tokens[nr_token].str[substr_len] = '\0';
@@ -230,13 +244,20 @@ static int find_main_op(int p, int q) {
     // 根据运算符类型确定优先级
     int priority = -1;
     switch (tokens[i].type) {
+      case TK_AND:
+        priority = 0;  // 最低优先级
+        break;
+      case TK_EQ:
+      case TK_NEQ:
+        priority = 1;  // 比较运算符
+        break;
       case '+':
       case '-':
-        priority = 1;  // 最低优先级
+        priority = 2;  // 加减法
         break;
       case '*':
       case '/':
-        priority = 2;  // 较高优先级
+        priority = 3;  // 乘除法
         break;
       default:
         continue;  // 不是运算符，跳过
@@ -264,16 +285,35 @@ static uint32_t eval(int p, int q, bool *success) {
   }
   else if (p == q) {
     /* Single token.
-     * For now this token should be a number.
-     * Return the value of the number.
+     * For now this token should be a number, hex, register, or dereference.
+     * Return the value of the token.
      */
     if (tokens[p].type == TK_NUM) {
       uint32_t num;
       sscanf(tokens[p].str, "%u", &num);
       return num;
+    } else if (tokens[p].type == TK_HEX) {
+      uint32_t num;
+      sscanf(tokens[p].str, "%x", &num);
+      return num;
+    } else if (tokens[p].type == TK_REG) {
+      // 获取寄存器值
+      bool reg_success = false;
+      word_t reg_val = isa_reg_str2val(tokens[p].str, &reg_success);
+      if (!reg_success) {
+        *success = false;
+        printf("Error: Invalid register name '%s'\n", tokens[p].str);
+        return 0;
+      }
+      return reg_val;
+    } else if (tokens[p].type == TK_DEREF) {
+      // 指针解引用
+      *success = false;
+      printf("Error: Invalid dereference at position %d\n", p);
+      return 0;
     } else {
       *success = false;
-      printf("Error: Expected a number at position %d\n", p);
+      printf("Error: Expected a number, hex, register, or dereference at position %d\n", p);
       return 0;
     }
   }
@@ -288,6 +328,13 @@ static uint32_t eval(int p, int q, bool *success) {
     int op = find_main_op(p, q);
     
     if (op == -1) {
+      // 检查是否是单目运算符（如指针解引用）
+      if (p == q - 1 && tokens[p].type == TK_DEREF) {
+        uint32_t addr = eval(p + 1, q, success);
+        if (!*success) return 0;
+        // 从内存中读取值
+        return paddr_read(addr, 4);
+      }
       *success = false;
       printf("Error: No main operator found\n");
       return 0;
@@ -310,6 +357,9 @@ static uint32_t eval(int p, int q, bool *success) {
           return 0;
         }
         return val1 / val2;
+      case TK_EQ: return val1 == val2;
+      case TK_NEQ: return val1 != val2;
+      case TK_AND: return val1 && val2;
       default:
         *success = false;
         printf("Error: Unknown operator\n");
@@ -331,6 +381,17 @@ word_t expr(char *e, bool *success) {
     *success = false;
     printf("Error: Empty expression\n");
     return 0;
+  }
+  
+  // 识别指针解引用：如果*前面是运算符、括号或开头，则为解引用
+  for (int i = 0; i < nr_token; i++) {
+    if (tokens[i].type == '*' && 
+        (i == 0 || tokens[i - 1].type == '+' || tokens[i - 1].type == '-' || 
+         tokens[i - 1].type == '*' || tokens[i - 1].type == '/' || 
+         tokens[i - 1].type == '(' || tokens[i - 1].type == TK_EQ || 
+         tokens[i - 1].type == TK_NEQ || tokens[i - 1].type == TK_AND)) {
+      tokens[i].type = TK_DEREF;
+    }
   }
   
   // 检查括号匹配

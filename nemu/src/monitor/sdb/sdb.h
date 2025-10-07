@@ -20,4 +20,11 @@
 
 word_t expr(char *e, bool *success);
 
+// 监视点相关函数声明
+void init_wp_pool();
+void new_wp(char *expr_str);
+void delete_wp(int NO);
+void display_wp();
+bool check_wp();
+
 #endif

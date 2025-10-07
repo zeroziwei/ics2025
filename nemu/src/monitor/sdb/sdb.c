@@ -65,7 +65,7 @@ static int cmd_info(char *args) {
   if (args == NULL) {
     printf("info w or info r \n");
   } else if (strcmp(args, "w") == 0) {
-    printf("info w\n");
+    display_wp();
   } else if (strcmp(args, "r") == 0) {
     printf("info r\n");
     isa_reg_display();
@@ -135,13 +135,24 @@ static int cmd_p(char *args) {
 
 
 static int cmd_w(char *args) {
-  printf("w\n");
+  if (args == NULL) {
+    printf("Usage: w EXPR\n");
+    return 0;
+  }
+  
+  new_wp(args);
   return 0;
 }
 
 
 static int cmd_d(char *args) {
-  printf("d\n");
+  if (args == NULL) {
+    printf("Usage: d N\n");
+    return 0;
+  }
+  
+  int NO = atoi(args);
+  delete_wp(NO);
   return 0;
 }
 
