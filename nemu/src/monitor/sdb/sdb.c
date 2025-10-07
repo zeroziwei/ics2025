@@ -116,7 +116,20 @@ static int cmd_x(char *args) {
 
 
 static int cmd_p(char *args) {
-  printf("p\n");
+  if (args == NULL) {
+    printf("Usage: p EXPR\n");
+    return 0;
+  }
+  
+  bool success = false;
+  word_t result = expr(args, &success);
+  
+  if (success) {
+    printf("Result: %u (0x%x)\n", result, result);
+  } else {
+    printf("Expression evaluation failed\n");
+  }
+  
   return 0;
 }
 
