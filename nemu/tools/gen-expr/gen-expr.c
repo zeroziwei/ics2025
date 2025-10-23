@@ -88,10 +88,8 @@ static int would_overflow(int additional_chars) {
   return buf_pos + additional_chars >= sizeof(buf) - 1;
 }
 
-// 使用递归下载方式来生成表达式
+// 使用递归下降方式来生成表达式
 static void gen_rand_expr() {
-  // 重置缓冲区位置
-  buf_pos = 0;
   // 如果缓冲区可能溢出，生成简单数字
   if (would_overflow(10)) {
     gen_num();
@@ -116,8 +114,6 @@ static void gen_rand_expr() {
       gen_rand_expr(); 
       break;
   }
-  // 保字符串以null结尾
-  buf[buf_pos] = '\0';
 }
 
 int main(int argc, char *argv[]) {
@@ -129,7 +125,10 @@ int main(int argc, char *argv[]) {
   }
   int i;
   for (i = 0; i < loop; i ++) {
+    buf_pos = 0;  // 重置缓冲区位置
     gen_rand_expr();
+    // 确保字符串以null结尾
+    buf[buf_pos] = '\0';
 
     // 将生成的表达式插入到c程序模板中
     sprintf(code_buf, code_format, buf);
