@@ -40,14 +40,14 @@
 - 探索：查看 `abstract-machine/am/include/am.h`，看看AM定义了哪些API？
 - 思考：为什么AM要分成这些模块？直接放在一起不行吗？
 
-### 问题6：AM和klib的区别是什么？
+### 问题6：[[AM和klib的区别是什么？]]
 - 对比：查看 `klib/src/string.c` 和 `am/src/platform/nemu/trm.c`，看看代码结构有什么不同？
 - 思考：为什么 `memcpy()` 在klib里，而 `halt()` 在AM里？
 - 探索：如果在x86和RISC-V上运行 `memcpy()`，实现会不同吗？`halt()` 呢？
 
 ## 第四层：编译和链接
 
-### 问题7：为什么不能直接用gcc默认选项编译？
+### 问题7：[[为什么不能直接用gcc默认选项编译？]]
 - 实验：尝试用普通gcc编译一个程序，看看会发生什么？
 - 思考：Linux下的程序依赖什么？NEMU能提供这些吗？
 - 探索：查看 `abstract-machine/scripts/linker.ld`，看看链接脚本做了什么？
