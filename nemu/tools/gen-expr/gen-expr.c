@@ -77,10 +77,11 @@ static void gen_rand_op() {
 
 // 生成随机空格
 static void gen_rand_space() {
-  int space_count = choose(3); // 0-2个空格
-  for (int i = 0; i < space_count; i++) {
-    gen(' ');
-  }
+  // int space_count = choose(3); // 0-2个空格
+  // for (int i = 0; i < space_count; i++) {
+    // gen(' ');
+  // }
+  gen(' ');
 }
 
 // 判断是否溢出

@@ -1,0 +1,268 @@
+{
+  "main": {
+    "id": "e796711d96fffdb0",
+    "type": "split",
+    "children": [
+      {
+        "id": "6cc2b0c768d5dc80",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d60b3d67db84c057",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "learning/程序, 运行时环境，AM切入点.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "程序, 运行时环境，AM切入点"
+            }
+          },
+          {
+            "id": "a57301862f5b4783",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "learning/程序, 运行时环境，AM切入点.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "程序, 运行时环境，AM切入点"
+            }
+          },
+          {
+            "id": "eee99848ccb89338",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "learning/TRM、IOE、CTE等模块的作用是什么？.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "TRM、IOE、CTE等模块的作用是什么？"
+            }
+          },
+          {
+            "id": "03bacfacc294ed0b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "learning/AM是什么？.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AM是什么？"
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "6f8f8555ca57bbdf",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "33053d3bcb073c77",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {},
+              "icon": "lucide-git-fork",
+              "title": "关系图谱"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "33f5946566b03916",
+    "type": "split",
+    "children": [
+      {
+        "id": "a00e3f28f4e68952",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3a57852aa6b7fef7",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "cac1bad82792f985",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "a28d1126e2d023bd",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "02cd0330040d7f2a",
+    "type": "split",
+    "children": [
+      {
+        "id": "5cc95a209458b074",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9466a5dc4382cb99",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "learning/RTFSC(2) · GitBook.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks for RTFSC(2) · GitBook"
+            }
+          },
+          {
+            "id": "6ef7a4a998c6d727",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "learning/RTFSC(2) · GitBook.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links from RTFSC(2) · GitBook"
+            }
+          },
+          {
+            "id": "96858181737f61dc",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "eee860cb3aea2084",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "b2714259b3d36535",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "learning/RTFSC(2) · GitBook.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of RTFSC(2) · GitBook"
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:创建新数据库": false
+    }
+  },
+  "active": "eee99848ccb89338",
+  "lastOpenFiles": [
+    "learning/程序, 运行时环境，AM切入点.md",
+    "learning/TRM、IOE、CTE等模块的作用是什么？.md",
+    "learning/抽象解决了什么问题？.md",
+    "learning/学习.md",
+    "learning/AM 和NEMU的区别.md",
+    "learning/AM是什么？.md",
+    "learning/让一个程序“运行起来”至少需要什么？.md",
+    "learning/为什么不能直接把程序放在内存里执行？.md",
+    "learning/RTFSC(2) · GitBook.md",
+    "learning/监视点 · GitBook.md",
+    "learning/基础设施(2) · GitBook 1.md",
+    "learning/基础设施(2) · GitBook.md",
+    "learning/程序, 运行时环境与AM · GitBook 1.md",
+    "learning - 快捷方式.lnk",
+    "learning/程序, 运行时环境与AM · GitBook.md",
+    "learning/RTFSC(2) · GitBook 1.md",
+    "Welcome.md",
+    "learning/不停计算的机器 · GitBook.md",
+    "learning"
+  ]
+}
