@@ -1,3 +1,5 @@
 {
-  "folder": "日记"
+  "folder": "日记",
+  "format": "YYYY-MM-DD",
+  "autorun": true
 }

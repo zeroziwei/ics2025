@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "learning/程序, 运行时环境，AM切入点.md",
+                "file": "learning/程序, 运行时环境，AM 切入点.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "程序, 运行时环境，AM切入点"
+              "title": "程序, 运行时环境，AM 切入点"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "learning/程序, 运行时环境，AM切入点.md",
+                "file": "learning/程序, 运行时环境，AM 切入点.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "程序, 运行时环境，AM切入点"
+              "title": "程序, 运行时环境，AM 切入点"
             }
           },
           {
@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "learning/程序, 运行时环境，AM切入点.md",
+                "file": "learning/程序, 运行时环境，AM 切入点.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "程序, 运行时环境，AM切入点"
+              "title": "程序, 运行时环境，AM 切入点"
             }
           },
           {
@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "learning/程序, 运行时环境，AM切入点.md",
+                "file": "learning/程序, 运行时环境，AM 切入点.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "程序, 运行时环境，AM切入点"
+              "title": "程序, 运行时环境，AM 切入点"
             }
           },
           {
@@ -120,45 +120,17 @@
             }
           },
           {
-            "id": "fbbb56805a9a9968",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "learning/监视点 切入点.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "监视点 切入点"
-            }
-          },
-          {
             "id": "e6432af66d5b26bf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Welcome.md",
+                "file": "learning/表达式求值 · GitBook.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Welcome"
-            }
-          },
-          {
-            "id": "7aefbce7c4b4f714",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "日记/2026-01-05.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2026-01-05"
+              "title": "表达式求值 · GitBook"
             }
           }
         ],
@@ -325,35 +297,38 @@
       "obsidian-memos:Thino": false
     }
   },
-  "active": "fbbb56805a9a9968",
+  "active": "e6432af66d5b26bf",
   "lastOpenFiles": [
-    "learning/监视点 如何调试监视点中的bug.md",
+    "日记/2026-01-09.md",
+    "日记/2026-01-05.md",
+    "learning/不停计算的机器 · GitBook.md",
+    "Welcome.md",
+    "总结/anki.md",
+    "资源/anki 资源.md",
+    "learning/表达式求值 切入点.md",
+    "learning/表达式求值 词法分析.md",
+    "总结",
+    "learning/表达式求值 · GitBook.md",
+    "复习",
+    "资源",
+    "learning/为什么不能直接把程序放在内存里执行？.md",
+    "learning/基础设施2 cpu-exec.c 与itrace.md",
+    "learning/基础设施2 切入点.md",
+    "learning/基础设施2 三种trace.md",
+    "learning/学习.md",
+    "learning/监视点 断点.md",
+    "learning/程序, 运行时环境，AM 切入点.md",
+    "learning/基础设施(2) · GitBook 1.md",
+    "learning/AM NEMU运行AM代码.md",
+    "learning/AM 测试AM代码.md",
+    "learning/RTFSC 切入点.md",
     "learning/监视点 切入点.md",
+    "learning/监视点 如何调试监视点中的bug.md",
     "learning/监视点 Address Sanitizer.md",
     "learning/监视点 释放监视点.md",
-    "learning/监视点 断点.md",
     "learning/监视点 池.md",
     "learning/监视点 基础概念.md",
-    "learning/监视点 如何实现暂停功能.md",
-    "learning/表达式求值 错误处理.md",
-    "learning/表达式求值 切入点.md",
-    "learning/表达式求值 递归求值.md",
-    "learning/表达式求值 词法分析.md",
-    "learning/表达式求值 基本问题.md",
-    "learning/表达式求值 结合性问题.md",
-    "learning/如何找到优先级最低的运算符.md",
-    "learning/程序, 运行时环境，AM切入点.md",
-    "learning/让一个程序“运行起来”至少需要什么？.md",
-    "learning/监视点 · GitBook.md",
-    "learning/基础设施(2) · GitBook.md",
-    "learning/抽象解决了什么问题？.md",
-    "learning/程序, 运行时环境与AM · GitBook.md",
-    "learning/不停计算的机器 · GitBook.md",
-    "日记/2026-01-05.md",
-    "Welcome.md",
-    "learning/表达式求值 · GitBook.md",
     "日记",
-    "learning/AM是什么？.md",
     "learning - 快捷方式.lnk",
     "learning"
   ]
